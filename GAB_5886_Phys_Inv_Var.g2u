@@ -1,0 +1,1428 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.frmInvVar..Create
+Gui.frmInvVar..Caption("Physical Inventory Variance")
+Gui.frmInvVar..Size(15045,10095)
+Gui.frmInvVar..MinX(15045)
+Gui.frmInvVar..MinY(10095)
+Gui.frmInvVar..Position(0,0)
+Gui.frmInvVar..BackColor(-2147483633)
+Gui.frmInvVar..MousePointer(0)
+Gui.frmInvVar..Event(UnLoad,UnLoad)
+Gui.frmInvVar.GsGCInvVar.Create(GsGridControl)
+Gui.frmInvVar.GsGCInvVar.Size(14865,8475)
+Gui.frmInvVar.GsGCInvVar.Position(30,1215)
+Gui.frmInvVar.GsGCInvVar.TabStop(True)
+Gui.frmInvVar.GsGCInvVar.TabIndex(4)
+Gui.frmInvVar.GsGCInvVar.Event(CellValueChanged,GsGCInvVar_CellValueChanged)
+Gui.frmInvVar.GsGCInvVar.Event(RowCellClick,GsGCInvVar_RowCellClick)
+Gui.frmInvVar.picGSSLogo.Create(PictureBox)
+Gui.frmInvVar.picGSSLogo.Size(4125,960)
+Gui.frmInvVar.picGSSLogo.Position(105,15)
+Gui.frmInvVar.lbl1.Create(Label,"Loading",True,2160,255,0,4500,120,True,0,"Arial",8,-2147483633,0)
+Gui.frmInvVar.lblPart.Create(Label,"Part",True,390,255,0,6525,120,True,0,"Arial",8,-2147483633,0)
+Gui.frmInvVar.txtPart.Create(TextBox,"",True,2280,300,0,6915,30,True,0,"Arial",8,-2147483643,1)
+Gui.frmInvVar.txtPart.MaxLength(20)
+Gui.frmInvVar.cmdPart.Create(Button)
+Gui.frmInvVar.cmdPart.Size(330,330)
+Gui.frmInvVar.cmdPart.Position(11070,15)
+Gui.frmInvVar.cmdPart.Caption("^")
+Gui.frmInvVar.cmdPart.DefaultValue("^")
+Gui.frmInvVar.cmdPart.Event(Click,cmdPart_Click)
+Gui.frmInvVar.cmdBin.Create(Button)
+Gui.frmInvVar.cmdBin.Size(330,330)
+Gui.frmInvVar.cmdBin.Position(12750,15)
+Gui.frmInvVar.cmdBin.Caption("^")
+Gui.frmInvVar.cmdBin.DefaultValue("^")
+Gui.frmInvVar.cmdBin.Event(Click,cmdBin_Click)
+Gui.frmInvVar.txtBin.Create(TextBox,"",True,975,300,0,11745,30,True,0,"Arial",8,-2147483643,1)
+Gui.frmInvVar.txtBin.MaxLength(6)
+Gui.frmInvVar.lblBin.Create(Label,"Bin",True,330,255,0,11415,120,True,0,"Arial",8,-2147483633,0)
+Gui.frmInvVar.lblLoc.Create(Label,"Loc",True,375,255,0,10215,120,True,0,"Arial",8,-2147483633,0)
+Gui.frmInvVar.txtLoc.Create(TextBox,"",True,435,300,0,10605,30,False,0,"Arial",8,-2147483643,1)
+Gui.frmInvVar.txtLoc.MaxLength(2)
+Gui.frmInvVar.txtRev.Create(TextBox,"",True,540,300,0,9615,30,True,0,"Arial",8,-2147483643,1)
+Gui.frmInvVar.txtRev.MaxLength(3)
+Gui.frmInvVar.lblRev.Create(Label,"Rev",True,405,255,0,9225,120,True,0,"Arial",8,-2147483633,0)
+Gui.frmInvVar.txtLot.Create(TextBox,"",True,1905,300,0,6915,510,True,0,"Arial",8,-2147483643,1)
+Gui.frmInvVar.txtLot.MaxLength(15)
+Gui.frmInvVar.lblLot.Create(Label,"Lot",True,390,255,0,6525,585,True,0,"Arial",8,-2147483633,0)
+Gui.frmInvVar.txtHeat.Create(TextBox,"",True,1905,300,0,9330,510,True,0,"Arial",8,-2147483643,1)
+Gui.frmInvVar.txtHeat.MaxLength(15)
+Gui.frmInvVar.lblHeat.Create(Label,"Heat",True,465,255,0,8865,585,True,0,"Arial",8,-2147483633,0)
+Gui.frmInvVar.txtSerial.Create(TextBox,"",True,2925,300,0,11805,510,True,0,"Arial",8,-2147483643,1)
+Gui.frmInvVar.txtSerial.MaxLength(30)
+Gui.frmInvVar.lblSerial.Create(Label,"Serial",True,555,255,0,11250,585,True,0,"Arial",8,-2147483633,0)
+Gui.frmInvVar.cmdAdd.Create(Button)
+Gui.frmInvVar.cmdAdd.Size(1470,375)
+Gui.frmInvVar.cmdAdd.Position(13260,15)
+Gui.frmInvVar.cmdAdd.Caption("Add Phys Count")
+Gui.frmInvVar.cmdAdd.Event(Click,cmdAdd_Click)
+Gui.frmInvVar.txtQty.Create(TextBox,"",True,975,300,0,5550,510,True,0,"Arial",8,-2147483643,1)
+Gui.frmInvVar.txtQty.MaxLength(6)
+Gui.frmInvVar.lblQty.Create(Label,"Quantity",True,705,255,0,4815,600,True,0,"Arial",8,-2147483633,0)
+Gui.frmInvVar.lblLeg.Create(Label,"*Refresh Data to Recalculate Variances",True,3000,255,0,11865,990,True,0,"Arial",8,-2147483633,0)
+Gui.frmInvVar.lblLeg.ForeColor(3937500)
+Gui.frmInvVar.cmdTransviewer.Create(Button)
+Gui.frmInvVar.cmdTransviewer.Size(2025,345)
+Gui.frmInvVar.cmdTransviewer.Position(9735,840)
+Gui.frmInvVar.cmdTransviewer.Caption("GS Mobile Trans Viewer")
+Gui.frmInvVar.cmdTransviewer.Event(Click,MenuClickTransViewer)
+Gui.frmInvVar.txtReference.Create(TextBox,"",True,2130,300,0,5760,870,True,0,"Arial",8,-2147483643,1)
+Gui.frmInvVar.txtReference.DefaultValue("")
+Gui.frmInvVar.lblReference.Create(Label,"Reference",True,885,315,0,4830,945,True,0,"Arial",8,-2147483633,0)
+Gui.frmScanData..Create
+Gui.frmScanData..Caption("Scan Data")
+Gui.frmScanData..Size(21135,5610)
+Gui.frmScanData..MinX(0)
+Gui.frmScanData..MinY(0)
+Gui.frmScanData..Position(0,0)
+Gui.frmScanData..BackColor(-2147483633)
+Gui.frmScanData..MousePointer(0)
+Gui.frmScanData..Event(UnLoad,Unload_ScanData)
+Gui.frmScanData.GsGCScanData.Create(GsGridControl)
+Gui.frmScanData.GsGCScanData.Size(20535,4905)
+Gui.frmScanData.GsGCScanData.Position(255,90)
+Gui.frmScanData.GsGCScanData.Event(RowCellClick,GsGCScanData_RowCellClick)
+Gui.frmScanData.GsGCScanData.Event(CellValueChanged,GsGCScanData_CellValueChanged)
+Gui.frmScanDataExport..Create
+Gui.frmScanDataExport..Size(15360,10695)
+Gui.frmScanDataExport..MinX(0)
+Gui.frmScanDataExport..MinY(0)
+Gui.frmScanDataExport..Position(0,0)
+Gui.frmScanDataExport..BackColor(-2147483633)
+Gui.frmScanDataExport..MousePointer(0)
+Gui.frmScanDataExport.GSGCScanDataAll.Create(GsGridControl)
+Gui.frmScanDataExport.GSGCScanDataAll.Size(13575,8940)
+Gui.frmScanDataExport.GSGCScanDataAll.Position(1050,585)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+V.Global.sPartRev.Declare 
+V.Global.bLoadDate.Declare
+V.Global.bLoadData.Declare
+v.Global.bDelete.Declare
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'Logan Hoover
+'Physical Inventory Dashboard
+'mod 2/3/21 - BS - added sub grid for managing scan detail in INV_PHYS_VAR table
+'mod 12/29/21 - BS - added reference to gridview and scan data gridview.  Added export of Scan Data to Excel when main gridview is exported
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sGSSLogo.Declare
+	V.Local.sIcon.Declare
+	V.Local.sDir.Declare
+	V.Local.bDir.Declare
+	
+	'Populate Hook 46010
+	'Script 1 46020
+
+	
+	F.Intrinsic.Control.SelectCase(V.Caller.Hook)
+		F.Intrinsic.Control.Case(46010)
+			V.Passed.000031.Set("Phys Inv Var")
+
+		'F.Intrinsic.Control.Case(46020)
+		F.Intrinsic.Control.CaseElse
+
+	F.ODBC.Connection!con.OpenCompanyConnection
+
+	F.Intrinsic.String.Build("{0}\GAB\GAS\gss2.ico",V.Caller.PluginsDir,v.Local.sIcon)
+	F.Intrinsic.String.Build("{0}\GAB\GAS\GAB_GSS_Logo_Green_Dash.png",V.Caller.PluginsDir,V.Local.sGssLogo)
+	Gui.frmInvVar.picGSSLogo.Picture(V.Local.sGSSLogo)
+	Gui.frmInvVar..Icon(V.Local.sIcon)
+	F.Intrinsic.Control.CallSub(SetAnchors)
+	F.Intrinsic.Control.CallSub(SetContextMenus)
+	F.Intrinsic.Control.CallSub(SetContextMenus_ScanData)
+	F.Intrinsic.Control.CallSub(LoadDtInvVar)
+	F.Intrinsic.Control.CallSub(Deserialize)
+	'F.Intrinsic.Control.CallSub(Deserialize_ScanData)
+	
+	Gui.frmInvVar..Show
+	F.Intrinsic.Control.EndSelect
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.UnLoad.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+
+	F.Intrinsic.Control.If(V.Global.bLoadDate)
+		F.Intrinsic.Control.CallSub(Serialize)
+	F.Intrinsic.Control.EndIf
+	
+	F.ODBC.Connection!con.Close
+	F.Intrinsic.Control.End
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.UnLoad.End
+
+Program.Sub.Serialize.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sSerialize.Declare
+	
+	'gvInvVar
+	f.Intrinsic.Control.If(v.Caller.GSSVersion,>,"2019.1")
+		'Gui.frmInvVar.GsGCInvVar.Serialize("gvInvVar",true,V.Local.sSerialize)
+		Gui.frmInvVar.GsGCInvVar.Serialize("gvInvVar",V.Local.sSerialize)
+	f.Intrinsic.Control.Else
+		Gui.frmInvVar.GsGCInvVar.Serialize("gvInvVar",V.Local.sSerialize)
+	f.Intrinsic.Control.EndIf
+	F.Global.Registry.AddValue(V.Caller.User,V.Caller.CompanyCode,"gvInvVar",5886,1000,False,"Serialize",False,0,-999.0,1/1/1980,12:00:00 AM,V.Local.sSerialize)
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.Serialize.End
+
+Program.Sub.SetAnchors.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	'0 - None
+	'1 - Top
+	'2 - Bottom
+	'4 - Left
+	'8 - Right
+	
+	Gui.frmInvVar.picGssLogo.Anchor(5)
+	Gui.frmInvVar.GsGCInvVar.Anchor(15)
+	gui.frmInvVar.lblLoc.Anchor(9)
+	Gui.frmInvVar.lblBin.Anchor(9)
+	Gui.frmInvVar.lblPart.Anchor(9)
+	Gui.frmInvVar.txtBin.Anchor(9)
+	Gui.frmInvVar.txtLoc.Anchor(9)
+	Gui.frmInvVar.txtPart.Anchor(9)
+	Gui.frmInvVar.cmdBin.Anchor(9)
+	Gui.frmInvVar.cmdPart.Anchor(9)
+	Gui.frmInvVar.lblQty.Anchor(9)
+	Gui.frmInvVar.txtQty.Anchor(9)
+	Gui.frmInvVar.lblLot.Anchor(9)
+	Gui.frmInvVar.txtLot.Anchor(9)
+	Gui.frmInvVar.lblHeat.Anchor(9)
+	Gui.frmInvVar.txtHeat.Anchor(9)
+	Gui.frmInvVar.lblSerial.Anchor(9)
+	Gui.frmInvVar.txtSerial.Anchor(9)
+	Gui.frmInvVar.lblRev.Anchor(9)
+	Gui.frmInvVar.txtRev.Anchor(9)
+	Gui.frmInvVar.cmdAdd.Anchor(9)
+	Gui.frmInvVar.lblLeg.Anchor(9)
+	gui.frmInvVar.cmdTransviewer.Anchor(9)
+	gui.frmInvVar.txtReference.Anchor(9)
+	gui.frmInvVar.lblReference.Anchor(9)
+
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.SetAnchors.End
+
+Program.Sub.LoadDtInvVar.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+
+	V.Local.sSQL.Declare
+	V.Local.iCnt.Declare
+	V.Local.fVar.Declare
+	V.Local.fExt.Declare
+	V.Local.sShip.Declare
+	V.Local.sIss.Declare
+	
+	F.Intrinsic.Control.If(V.DataTable.dtInvVar.Exists)
+		F.Data.DataTable.Close("dtInvVar")
+	F.Intrinsic.Control.EndIf
+	
+	V.Global.bLoadDate.Set(True)
+	V.Global.bLoadData.Set(True)
+	
+	'F.Data.DataTable.CreateFromSQL("dtInvVar","con","SELECT C.PART,C.LOCATION,C.PRODUCT_LINE,C.CODE_SORT,A.LOT,A.BIN,A.HEAT,A.SERIAL,A.QTY AS PHYSICAL_QTY,CASE WHEN B.QUANTITY IS NULL THEN '0' ELSE B.QUANTITY END AS MSTR_QTY,C.QTY_ONHAND, (A.QTY-B.QUANTITY) AS QTY_VAR, (B.UNIT_COST*(A.QTY - B.QUANTITY)) AS EXT_COST_VAR, B.UNIT_COST, D.COST, C.FLAG_LOT FROM V_INV_PHYS_VAR A LEFT JOIN V_ITEM_MASTER B ON A.PART = B.PART AND A.LOCATION = B.LOCATION AND A.LOT = B.LOT AND A.BIN = B.BIN AND A.HEAT = B.HEAT AND A.SERIAL = B.SERIAL_NUMBER LEFT JOIN V_INVENTORY_ALL C ON A.PART = C.PART AND A.LOCATION = C.LOCATION LEFT JOIN V_INVENTORY_COST D ON A.PART = D.PART AND A.LOCATION = D.LOCN",True)
+	
+
+'	F.Data.DataTable.CreateFromSQL("dtInvVar","con","SELECT A.PART,A.LOCATION,C.PRODUCT_LINE,C.CODE_SORT,A.LOT,A.BIN,A.HEAT,A.SERIAL,SUM(A.QTY) AS PHYSICAL_QTY,SUM(CASE WHEN B.QUANTITY IS NULL THEN '0' ELSE B.QUANTITY END) AS MSTR_QTY,SUM(A.QTY-B.QUANTITY) AS QTY_VAR, SUM	(B.UNIT_COST*(A.QTY-B.QUANTITY)) AS EXT_COST_VAR,SUM(C.QTY_ONHAND) AS QTY_ONHAND, B.UNIT_COST , SUM(D.COST) AS COST, C.FLAG_LOT FROM V_INV_PHYS_VAR A LEFT JOIN V_ITEM_MASTER B ON A.PART = B.PART AND A.LOCATION = B.LOCATION AND A.LOT = B.LOT AND A.BIN = B.BIN AND A.HEAT = 		B.HEAT AND A.SERIAL = B.SERIAL_NUMBER LEFT JOIN V_INVENTORY_ALL C ON A.PART = C.PART AND A.LOCATION = C.LOCATION LEFT JOIN V_INVENTORY_COST D ON A.PART = D.PART AND A.LOCATION = D.LOCN GROUP BY A.PART, A.LOCATION, C.PRODUCT_LINE, C.CODE_SORT, A.LOT, A.BIN, A.HEAT, A.SERIAL, 	B.UNIT_COST, C.FLAG_LOT ",True)
+
+	F.Data.DataTable.CreateFromSQL("dtInvVar","con","SELECT A.PART,A.LOCATION,C.DESCRIPTION,C.PRODUCT_LINE,C.UM_INVENTORY,C.CODE_SORT,A.LOT,A.BIN,A.HEAT,A.SERIAL,SUM(A.QTY) AS PHYSICAL_QTY,CASE WHEN B.QUANTITY IS NULL THEN '0' ELSE B.QUANTITY END AS MSTR_QTY,SUM(A.QTY-B.QUANTITY) AS QTY_VAR, SUM(B.UNIT_COST*(A.QTY-B.QUANTITY)) AS EXT_COST_VAR,C.QTY_ONHAND, B.UNIT_COST , D.COST, C.FLAG_LOT,MAX(LAST_CHG_USER) AS USERNAME,MAX(A.LAST_CHG_DATE) AS COUNT_DATE,MAX(A.LAST_CHG_TIME) AS COUNT_TIME,MIN(A.REFERENCE) AS REFERENCE FROM V_INV_PHYS_VAR A LEFT JOIN V_ITEM_MASTER B ON A.PART = B.PART AND A.LOCATION = B.LOCATION AND A.LOT = B.LOT AND A.BIN = B.BIN AND A.HEAT = B.HEAT AND A.SERIAL = B.SERIAL_NUMBER LEFT JOIN V_INVENTORY_ALL C ON A.PART = C.PART AND A.LOCATION = C.LOCATION LEFT JOIN V_INVENTORY_COST D ON A.PART = D.PART AND A.LOCATION = D.LOCN GROUP BY A.PART, A.LOCATION, C.PRODUCT_LINE, C.CODE_SORT, A.LOT, A.BIN, A.HEAT, A.SERIAL, MSTR_QTY, C.QTY_ONHAND,B.UNIT_COST, D.COST,C.FLAG_LOT,C.DESCRIPTION,UM_INVENTORY  ",True)
+'	F.Data.DataTable.CreateFromSQL("dtInvVar","con","SELECT A.PART,A.LOCATION,C.DESCRIPTION,C.PRODUCT_LINE,C.UM_INVENTORY,C.CODE_SORT,A.LOT,A.BIN,A.HEAT,A.SERIAL,SUM(A.QTY) AS PHYSICAL_QTY,CASE WHEN B.QUANTITY IS NULL THEN '0' ELSE B.QUANTITY END AS MSTR_QTY,SUM(A.QTY-B.QUANTITY) AS QTY_VAR, SUM(B.UNIT_COST*(A.QTY-B.QUANTITY)) AS EXT_COST_VAR,C.QTY_ONHAND, B.UNIT_COST , D.COST, C.FLAG_LOT,(select TOP 1 Z.LAST_CHG_USER from INV_PHYS_VAR Z WHERE PART=Z.PART AND LOCATION=Z.LOCATION AND LOT=Z.LOT AND BIN=Z.BIN AND HEAT=Z.HEAT AND SERIAL=Z.SERIAL ORDER BY Z.LAST_CHG_DATE DESC, Z.LAST_CHG_TIME DESC) AS USERNAME,MAX(A.LAST_CHG_DATE) AS COUNT_DATE,MAX(A.LAST_CHG_TIME) AS COUNT_TIME,MIN(A.REFERENCE) AS REFERENCE FROM V_INV_PHYS_VAR A LEFT JOIN V_ITEM_MASTER B ON A.PART = B.PART AND A.LOCATION = B.LOCATION AND A.LOT = B.LOT AND A.BIN = B.BIN AND A.HEAT = B.HEAT AND A.SERIAL = B.SERIAL_NUMBER LEFT JOIN V_INVENTORY_ALL C ON A.PART = C.PART AND A.LOCATION = C.LOCATION LEFT JOIN V_INVENTORY_COST D ON A.PART = D.PART AND A.LOCATION = D.LOCN GROUP BY A.PART, A.LOCATION, C.PRODUCT_LINE, C.CODE_SORT, A.LOT, A.BIN, A.HEAT, A.SERIAL, MSTR_QTY, C.QTY_ONHAND,B.UNIT_COST, D.COST,C.FLAG_LOT,C.DESCRIPTION,UM_INVENTORY ",True)
+
+	F.Global.General.ReadOption("400380","0","0","0000",V.Local.sShip)
+	F.Global.General.ReadOption("400400","0","0","0000",V.Local.sIss)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtInvVar.RowCount--,1)
+			f.Intrinsic.Control.If(v.DataTable.dtInvVar(V.Local.iCnt).FLAG_LOT!FieldVal,=,"N", OR, v.DataTable.dtInvVar(V.Local.iCnt).FLAG_LOT!FieldVal,=," ")
+				f.Intrinsic.Math.Sub(v.DataTable.dtInvVar(V.Local.iCnt).PHYSICAL_QTY!FieldValFloat,v.DataTable.dtInvVar(V.Local.iCnt).QTY_ONHAND!FieldValFloat,V.Local.fVar)
+				F.Data.DataTable.SetValue("dtInvVar",V.Local.iCnt,"QTY_VAR",V.Local.fVar)
+				F.Intrinsic.Math.Mult(v.DataTable.dtInvVar(V.Local.iCnt).COST!FieldValFloat,V.Local.fVar,V.Local.fExt)
+				F.Data.DataTable.SetValue("dtInvVar",V.Local.iCnt,"EXT_COST_VAR",V.Local.fExt)
+				F.Data.DataTable.SetValue("dtInvVar",V.Local.iCnt,"UNIT_COST",V.DataTable.dtInvVar(V.Local.iCnt).COST!FieldVal)
+			F.Intrinsic.Control.Else
+				F.Intrinsic.Control.If(v.Local.sShip,=,"True",OR,v.Local.sIss,=,"True")
+					'F.Data.DataTable.SetValue("dtInvVar",V.Local.iCnt,"QTY_VAR",v.DataTable.dtInvVar(V.Local.iCnt).QTY_VAR!FieldValFloat)
+					f.Intrinsic.Math.Sub(v.DataTable.dtInvVar(V.Local.iCnt).PHYSICAL_QTY!FieldValFloat,v.DataTable.dtInvVar(V.Local.iCnt).MSTR_QTY!FieldValFloat,V.Local.fVar)
+                    F.Data.DataTable.SetValue("dtInvVar",V.Local.iCnt,"QTY_VAR",V.Local.fVar)
+                    f.Intrinsic.Control.If(v.DataTable.dtInvVar(V.Local.iCnt).MSTR_QTY!FieldValFloat,=,0)
+                    	F.Data.DataTable.SetValue("dtInvVar",V.Local.iCnt,"UNIT_COST",V.DataTable.dtInvVar(V.Local.iCnt).COST!FieldVal)
+                    f.Intrinsic.Control.EndIf
+					'F.Data.DataTable.SetValue("dtInvVar",V.Local.iCnt,"EXT_COST_VAR",v.DataTable.dtInvVar(V.Local.iCnt).EXT_COST_VAR!FieldValFloat)
+					F.Intrinsic.Math.Mult(v.DataTable.dtInvVar(V.Local.iCnt).UNIT_COST!FieldValFloat,v.DataTable.dtInvVar(V.Local.iCnt).QTY_VAR!FieldValFloat,V.Local.fExt)
+					F.Data.DataTable.SetValue("dtInvVar",V.Local.iCnt,"EXT_COST_VAR",V.Local.fExt)
+				F.Intrinsic.Control.Else
+					'F.Data.DataTable.SetValue("dtInvVar",V.Local.iCnt,"QTY_VAR",v.DataTable.dtInvVar(V.Local.iCnt).QTY_VAR!FieldValFloat)
+					F.Intrinsic.Math.Sub(v.DataTable.dtInvVar(V.Local.iCnt).PHYSICAL_QTY!FieldValFloat,v.DataTable.dtInvVar(V.Local.iCnt).MSTR_QTY!FieldValFloat,V.Local.fVar)
+                    F.Data.DataTable.SetValue("dtInvVar",V.Local.iCnt,"QTY_VAR",V.Local.fVar)
+					F.Data.DataTable.SetValue("dtInvVar",V.Local.iCnt,"UNIT_COST",V.DataTable.dtInvVar(V.Local.iCnt).COST!FieldVal)
+					F.Intrinsic.Math.Mult(v.DataTable.dtInvVar(V.Local.iCnt).COST!FieldValFloat,V.DataTable.dtInvVar(V.Local.iCnt).QTY_VAR!FieldValFloat,V.Local.fExt)
+					F.Data.DataTable.SetValue("dtInvVar",V.Local.iCnt,"EXT_COST_VAR",V.Local.fExt)
+				F.Intrinsic.Control.EndIf
+			f.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+'	F.Intrinsic.Control.If(V.Local.sRet,=,"True")
+'		Gui.frmInvVar.txtLoc.Enabled(True)
+'	F.Intrinsic.Control.Else
+'		Gui.frmInvVar.txtLoc.Enabled(False)
+'	F.Intrinsic.Control.EndIf
+	
+	gui.frmInvVar.lbl1.Visible(True)
+	gui.frmInvVar.lbl1.Caption("Loading Counted Parts...")
+	
+	F.Intrinsic.Control.CallSub(LoadInvVarGV)
+	
+	gui.frmInvVar.lbl1.Visible(False)
+
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.LoadDtInvVar.End
+
+Program.Sub.LoadInvVarGV.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sRet.Declare
+	
+	gui.frmInvVar.lbl1.Visible(True)
+	gui.frmInvVar.lbl1.Caption("Loading Counted Parts...")
+	
+	Gui.frmInvVar.GsGCInvVar.AddGridviewFromDatatable("gvInvVar","dtInvVar")
+	Gui.frmInvVar.GsGCInvVar.SuspendLayout()
+	Gui.frmInvVar.GsGCInvVar.SetGridviewProperty("gvInvVar","AllowSort",True)
+	Gui.frmInvVar.GsGCInvVar.SetGridviewProperty("gvInvVar","AllowFilter",True)
+	Gui.frmInvVar.GsGCInvVar.SetGridviewProperty("gvInvVar","OptionsViewShowGroupPanel",True)
+	Gui.frmInvVar.GsGCInvVar.SetGridviewProperty("gvInvVar","EnableAppearanceOddRow",True)
+	Gui.frmInvVar.GsGCInvVar.SetGridviewProperty("gvInvVar","EnableAppearanceOddRow",True)
+	Gui.frmInvVar.GsGCInvVar.BestFitColumns("gvInvVar")
+	Gui.frmInvVar.GsGCInvVar.SetGridViewProperty("gvInvVar","OptionsFindAlwaysVisible",True)
+	Gui.frmInvVar.GsGCInvVar.SetGridViewProperty("gvInvVar","OptionsViewShowAutoFilterRow",True)
+	Gui.frmInvVar.GsGCInvVar.SetGridViewProperty("gvInvVar","OptionsViewColumnAutoWidth",False)
+	f.Intrinsic.Control.If(v.Caller.GSSVersion,>,"2019.1")
+		Gui.frmInvVar.GsGCInvVar.SetGridviewProperty("gvInvVar","showconditionalformattingitem",true)
+		'add columns available for user side summary
+		gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","EXT_COST_VAR","allsummarymenu",true)
+		gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PHYSICAL_QTY","allsummarymenu",true)
+		gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","MSTR_QTY","allsummarymenu",true)
+		gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","QTY_VAR","allsummarymenu",true)
+		gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PART","allsummarymenu",true)
+		'to select multiple rows
+		gui.frmInvVar.GsGCInvVar.SetGridviewProperty("gvInvVar","multiselect",true)
+		' 0-rowselect, 1- cellselect, 3- checkbox select
+		gui.frmInvVar.GsGCInvVar.SetGridviewProperty("gvInvVar","multiselectmode",1)
+		gui.frmInvVar.GsGCInvVar.SetGridviewProperty("gvInvVar","showgrouppanel",true)
+		gui.frmInvVar.GsGCInvVar.SetGridviewProperty("gvInvVar","showtotalsummarymenu",true)
+		gui.frmInvVar.GsGCInvVar.SetGridviewProperty("gvInvVar","showaddnewsummaryitem",true)
+		gui.frmInvVar.GsGCInvVar.SetGridviewProperty("gvInvVar","showgroupsortsummaryitems",true)
+		gui.frmInvVar.GsGCInvVar.SetGridviewProperty("gvInvVar","showgroupsummarymenu",true)
+		gui.frmInvVar.GsGCInvVar.SetGridviewProperty("gvInvVar","Showsummaryitemmode",true)
+	f.Intrinsic.Control.EndIf
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","QTY_VAR","Caption","Quantity Variance")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","QTY_VAR","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","QTY_VAR","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","QTY_VAR","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","QTY_VAR","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","QTY_VAR","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","QTY_VAR","MinWidth","85")	
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PART","Caption","Part")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PART","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PART","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PART","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PART","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PART","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PART","MinWidth","130")	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PART","CellForeColor","Blue")
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","LOCATION","Caption","Location")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","LOCATION","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","LOCATION","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","LOCATION","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","LOCATION","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","LOCATION","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","LOCATION","MinWidth","45")	
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","LOT","Caption","Lot")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","LOT","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","LOT","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","LOT","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","LOT","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","LOT","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","LOT","MinWidth","130")
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","BIN","Caption","Bin")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","BIN","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","BIN","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","BIN","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","BIN","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","BIN","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","BIN","MinWidth","65")
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","HEAT","Caption","Heat")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","HEAT","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","HEAT","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","HEAT","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","HEAT","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","HEAT","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","HEAT","MinWidth","130")
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","SERIAL","Caption","Serial")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","SERIAL","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","SERIAL","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","SERIAL","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","SERIAL","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","SERIAL","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","SERIAL","MinWidth","130")
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PHYSICAL_QTY","Caption","Physical Quantity")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PHYSICAL_QTY","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PHYSICAL_QTY","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PHYSICAL_QTY","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PHYSICAL_QTY","AllowEdit",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PHYSICAL_QTY","ReadOnly",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PHYSICAL_QTY","CellBackColor","LightYellow")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PHYSICAL_QTY","MinWidth","85")	
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","MSTR_QTY","Caption","Item Master Quantity")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","MSTR_QTY","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","MSTR_QTY","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","MSTR_QTY","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","MSTR_QTY","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","MSTR_QTY","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","MSTR_QTY","MinWidth","85")	
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","QTY_ONHAND","Caption","On-Hand Quantity")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","QTY_ONHAND","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","QTY_ONHAND","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","QTY_ONHAND","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","QTY_ONHAND","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","QTY_ONHAND","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","QTY_ONHAND","MinWidth","85")	
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","EXT_COST_VAR","Caption","Extended Cost Variance")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","EXT_COST_VAR","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","EXT_COST_VAR","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","EXT_COST_VAR","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","EXT_COST_VAR","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","EXT_COST_VAR","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","EXT_COST_VAR","MinWidth","105")	
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","UNIT_COST","Caption","Unit Cost")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","UNIT_COST","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","UNIT_COST","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","UNIT_COST","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","UNIT_COST","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","UNIT_COST","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","UNIT_COST","MinWidth","105")	
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PRODUCT_LINE","Caption","PL")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PRODUCT_LINE","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PRODUCT_LINE","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PRODUCT_LINE","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PRODUCT_LINE","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PRODUCT_LINE","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","PRODUCT_LINE","MinWidth","45")
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_SORT","Caption","Sort Code")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_SORT","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_SORT","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_SORT","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_SORT","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_SORT","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_SORT","MinWidth","65")
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","USERNAME","Caption","Username")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","USERNAME","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","USERNAME","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","USERNAME","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","USERNAME","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","USERNAME","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","USERNAME","MinWidth","65")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","USERNAME","CellForeColor","Blue")
+
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DESCRIPTION","Caption","DESCRIPTION")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DESCRIPTION","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DESCRIPTION","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DESCRIPTION","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DESCRIPTION","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DESCRIPTION","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DESCRIPTION","MinWidth","130")
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","COUNT_DATE","Caption","Count Date")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","COUNT_DATE","DisplayCustomDatetime","d")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","COUNT_DATE","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","COUNT_DATE","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","COUNT_DATE","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","COUNT_DATE","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","COUNT_DATE","MinWidth","100")
+
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","COUNT_TIME","Caption","Count Time")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","COUNT_TIME","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","COUNT_TIME","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","COUNT_TIME","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","COUNT_TIME","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","COUNT_TIME","MinWidth","90")
+
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","UM_INVENTORY","Caption","UM")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","UM_INVENTORY","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","UM_INVENTORY","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","UM_INVENTORY","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","UM_INVENTORY","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","UM_INVENTORY","MinWidth","45")
+
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","COST","Visible",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","FLAG_LOT","Visible",False)
+	
+	Gui.frmInvVar.GsGCInvVar.AddSummaryItem("gvInvVar","EXT_COST_VAR","","Sum","","","n4")
+	Gui.frmInvVar.GsGCInvVar.AddSummaryItem("gvInvVar","PHYSICAL_QTY","","Sum","","","n4")
+	Gui.frmInvVar.GsGCInvVar.AddSummaryItem("gvInvVar","MSTR_QTY","","Sum","","","n4")
+	Gui.frmInvVar.GsGCInvVar.AddSummaryItem("gvInvVar","QTY_VAR","","Sum","","","n4")
+	Gui.frmInvVar.GsGCInvVar.AddSummaryItem("gvInvVar","PART","","COUNT","","","n0")
+
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","REFERENCE","Caption","Reference")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","REFERENCE","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","REFERENCE","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","REFERENCE","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","REFERENCE","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","REFERENCE","MinWidth","130")
+	
+	F.Global.General.ReadOption("400363","0","0","0000",V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet,=,"True")
+		Gui.frmInvVar.txtLoc.Enabled(True)
+	F.Intrinsic.Control.Else
+		Gui.frmInvVar.txtLoc.Enabled(False)
+	F.Intrinsic.Control.EndIf
+	
+	'F.Global.General.ReadOption("70008","0","0","0000",V.Local.sRet)
+	'F.Intrinsic.Control.If(V.Local.sRet,=,"True")
+	'	Gui.frmInvVar.txtRev.Enabled(True)
+	'F.Intrinsic.Control.Else
+	Gui.frmInvVar.txtRev.Enabled(False)
+	'F.Intrinsic.Control.EndIf
+	
+	Gui.frmInvVar.txtPart.Enabled(False)
+	
+	Gui.frmInvVar.GsGCInvVar.ResumeLayout()
+	Gui.frmInvVar.GsGCInvVar.MainView("gvInvVar")
+
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.LoadInvVarGV.End
+
+Program.Sub.SetContextMenus.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	Gui.frmInvVar..ContextMenuCreate("ctxInvVar")
+	Gui.frmInvVar.GsGCInvVar.ContextMenuAttach("ctxInvVar")
+	'Gui.frmInvVar..ContextMenuAddItem("ctxInvVar","Add",0,"Add Line")
+	Gui.frmInvVar..ContextMenuAddItem("ctxInvVar","Delete",0,"Clear All Data")
+	Gui.frmInvVar..ContextMenuAddItem("ctxInvVar","Refresh",0,"Refresh")
+	Gui.frmInvVar..ContextMenuAddItem("ctxInvVar","Export",0,"Export")
+	Gui.frmInvVar..ContextMenuAddItem("ctxInvVar","Reset Columns",0,"Reset Columns")
+	'Gui.frmInvVar..ContextMenuSetItemEventHandler("ctxInvVar","Add","MenuClickAdd")
+	Gui.frmInvVar..ContextMenuSetItemEventHandler("ctxInvVar","Delete","MenuClickDelete")
+	Gui.frmInvVar..ContextMenuSetItemEventHandler("ctxInvVar","Refresh","MenuClickRefresh")
+	Gui.frmInvVar..ContextMenuSetItemEventHandler("ctxInvVar","Export","MenuClickExport")
+	Gui.frmInvVar..ContextMenuSetItemEventHandler("ctxInvVar","Reset Columns","MenuClickReset")
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.SetContextMenus.End
+
+Program.Sub.GsGCInvVar_CellValueChanged.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sPart.Declare
+	V.Local.sLoc.Declare
+	V.Local.sLot.Declare
+	V.Local.sBin.Declare
+	V.Local.sHeat.Declare
+	V.Local.sSerial.Declare
+	V.Local.sField.Declare
+	V.Local.sSQL.Declare
+	V.Local.sDelete.Declare
+	
+	F.Intrinsic.Control.SelectCase(V.Args.Column)
+		F.Intrinsic.Control.Case("PHYSICAL_QTY")
+			V.Local.sPart.Set(V.DataTable.dtInvVar(V.Args.RowIndex).Part!FieldVal)
+			V.Local.sLoc.Set(V.DataTable.dtInvVar(V.Args.RowIndex).Location!FieldVal)
+			V.Local.sLot.Set(V.DataTable.dtInvVar(V.Args.RowIndex).Lot!FieldVal)
+			V.Local.sBin.Set(V.DataTable.dtInvVar(V.Args.RowIndex).Bin!FieldVal)
+			V.Local.sHeat.Set(V.DataTable.dtInvVar(V.Args.RowIndex).Heat!FieldVal)
+			V.Local.sSerial.Set(V.DataTable.dtInvVar(V.Args.RowIndex).Serial!FieldVal)
+			F.Intrinsic.String.Build("DELETE INV_PHYS_VAR Where Part = '{1}' And Location = '{2}' and Lot = '{3}' and Bin = '{4}' and Heat = '{5}' and Serial = '{6}' and SEQUENCE <> '000000';",V.Local.sField,V.Local.sPart,V.Local.sLoc,V.Local.sLot,V.Local.sBin,V.Local.sHeat,V.Local.sSerial,V.Local.sDelete)
+			F.Intrinsic.String.Build("{0} = '{1}'","QTY",V.Args.Value,V.Local.sField)
+			F.ODBC.Connection!con.Execute(V.Local.sDelete)
+			F.Intrinsic.String.Build("Update INV_PHYS_VAR Set {0} Where Part = '{1}' And Location = '{2}' and Lot = '{3}' and Bin = '{4}' and Heat = '{5}' and Serial = '{6}' and SEQUENCE = '000000';",V.Local.sField,V.Local.sPart,V.Local.sLoc,V.Local.sLot,V.Local.sBin,V.Local.sHeat,V.Local.sSerial,V.Local.sSQL)
+			F.ODBC.Connection!con.Execute(V.Local.sSQL)
+			F.Intrinsic.String.Build("Update INV_PHYS_VAR Set LAST_CHG_USER = '{0}' Where Part = '{1}' And Location = '{2}' and Lot = '{3}' and Bin = '{4}' and Heat = '{5}' and Serial = '{6}' and SEQUENCE = '000000';",V.Caller.User,V.Local.sPart,V.Local.sLoc,V.Local.sLot,V.Local.sBin,V.Local.sHeat,V.Local.sSerial,V.Local.sSQL)
+			F.ODBC.Connection!con.Execute(V.Local.sSQL)
+	F.Intrinsic.Control.EndSelect
+	
+	'f.Intrinsic.Control.CallSub(LoadDTInvVar)
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.GsGCInvVar_CellValueChanged.End
+
+Program.Sub.MenuClickRefresh.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+
+	f.Intrinsic.Control.If(v.Global.bLoadData)
+		f.Intrinsic.Control.CallSub(Serialize)
+	f.Intrinsic.Control.EndIf
+
+	f.Intrinsic.Control.BlockEvents
+	'gui.frmRouters.frameOption.Enabled(False)
+	f.Intrinsic.Control.CallSub(LoadDtInvVar)
+	f.Intrinsic.Control.UnBlockEvents
+	'gui.frmRouters.frameOption.Enabled(True)
+	F.Intrinsic.Control.CallSub(Deserialize)
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.MenuClickRefresh.End
+
+Program.Sub.cmdPart_Click.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sRet.Declare
+	
+	F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+	
+	F.ODBC.Connection!conx.OpenCompanyConnection()
+	F.Intrinsic.UI.Browser(100,"",V.Local.sRet)
+	F.ODBC.Connection!conx.Close
+
+	F.Intrinsic.Control.If(V.Local.sRet,"=","***CANCEL***")
+		F.Intrinsic.UI.Msgbox("No Part Selected")
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+		F.Intrinsic.String.Concat(V.Local.sRet(0),V.Local.sRet(1),V.Global.sPartRev)
+		Gui.frmInvVar.txtPart.Text(V.Local.sRet(0))
+		Gui.frmInvVar.txtRev.Text(V.Local.sRet(1))
+		Gui.frmInvVar.txtLoc.Text(V.Local.sRet(2))
+	F.Intrinsic.Control.EndIf
+
+	F.Intrinsic.Control.ExitSub
+
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.cmdPart_Click.End
+
+Program.Sub.cmdBin_Click.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sRet.Declare
+	
+	F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+	
+	F.ODBC.Connection!conx.OpenCompanyConnection()
+	F.Intrinsic.UI.Browser(150,"",V.Local.sRet)
+	F.ODBC.Connection!conx.Close
+	
+	F.Intrinsic.Control.If(V.Local.sRet,"=","***CANCEL***")
+		F.Intrinsic.UI.Msgbox("No Bin Selected")
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+		Gui.frmInvVar.txtBin.Text(V.Local.sRet(0))
+	F.Intrinsic.Control.EndIf
+
+	F.Intrinsic.Control.ExitSub
+
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.cmdBin_Click.End
+
+Program.Sub.cmdAdd_Click.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sRet.Declare
+	V.Local.sPart.Declare
+	V.Local.sRev.Declare
+	V.Local.sLoc.Declare
+	V.Local.sBin.Declare
+	V.Local.sLot.Declare
+	V.Local.sHeat.Declare
+	V.Local.sSerial.Declare
+	V.Local.sQty.Declare
+	V.Local.sTest.Declare
+	V.Local.dDate.Declare
+	V.Local.sDate.Declare
+	V.Local.sSQL.Declare
+	v.Local.sReference.Declare
+	
+	
+	F.Global.General.ReadOption("401185","0","0","0000",V.Local.sRet)
+	
+	'401185-0 force bin
+	F.Intrinsic.Control.If(V.Screen.frmInvVar!txtPart.Text,=,"")
+		F.Intrinsic.UI.Msgbox("Part must be entered")
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.If(V.Screen.frmInvVar!txtBin.Text,=,"",AND,V.Local.sRet,=,"True")
+		F.Intrinsic.UI.Msgbox("Bin must be entered")
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+
+	V.Local.sPart.Set(V.Screen.frmInvVar!txtPart.Text)
+	V.Local.sRev.Set(V.Screen.frmInvVar!txtRev.Text)
+		V.Local.sLoc.Set(V.Screen.frmInvVar!txtLoc.Text)
+	F.Intrinsic.Control.If(V.Local.sLoc,=,"  ")
+		V.Local.sLoc.Set("")
+	F.Intrinsic.Control.EndIf
+	V.Local.sBin.Set(V.Screen.frmInvVar!txtBin.Text)
+	V.Local.sLot.Set(V.Screen.frmInvVar!txtLot.Text)
+	V.Local.sHeat.Set(V.Screen.frmInvVar!txtHeat.Text)
+	V.Local.sSerial.Set(V.Screen.frmInvVar!txtSerial.Text)
+	V.Local.sQty.Set(V.Screen.frmInvVar!txtQty.Text)
+	V.Local.sRev.Set(V.Local.sRev.Trim)
+	V.Local.sReference.Set(V.Screen.frmInvVar!txtReference.Text)
+	
+	v.Local.dDate.Set(v.Ambient.Date)
+	v.Local.sDate.Set(v.Local.dDate.formatyyyymmdd)
+
+	F.Intrinsic.String.Build("INSERT INTO INV_PHYS_VAR (PART,LOCATION,LOT,BIN,HEAT,SERIAL,SEQUENCE,QTY,DATE_TRANS,REFERENCE,LAST_CHG_USER,LAST_CHG_PGM) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','000000','{6}','{7}','{9}','{8}','GAB_5886')",V.Global.sPartRev.Trim,V.Local.sLoc,V.Local.sLot,v.Local.sBin,v.Local.sHeat,v.Local.sSerial,v.Local.sQty,v.Local.sDate,v.Caller.User,v.Local.sReference,V.Local.sSQL)	
+	
+	
+	F.ODBC.Connection!conL.OpenCompanyConnection
+	F.ODBC.Connection!conL.Execute(V.Local.sSQL)
+	F.ODBC.Connection!conL.Close
+	
+	F.Intrinsic.Control.CallSub(MenuClickRefresh)	
+	
+	Gui.frmInvVar.txtPart.Text("")
+	Gui.frmInvVar.txtRev.Text("")
+	Gui.frmInvVar.txtLoc.Text("")
+	Gui.frmInvVar.txtQty.Text("")
+	
+	F.Intrinsic.Control.ExitSub
+
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+
+
+Program.Sub.cmdAdd_Click.End
+
+Program.Sub.MenuClickExport.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sForm.Declare(String, "frmInvVar")
+	V.Local.sControl.Declare(String, "GsGCInvVar")
+	V.Local.sFileExport.Declare(String)
+	V.Local.sMsg.Declare(String)
+	V.Local.sDate.Declare(String)
+	V.Local.sTime.Declare(String)
+	V.Local.bExcel.Declare(Boolean)
+	V.Local.bFileLocked.Declare(Boolean)
+	
+	F.Automation.MSExcel.CheckPresence(V.Local.bExcel)
+	F.Intrinsic.String.DateString(V.Ambient.Date,V.Local.sDate)
+	F.Intrinsic.String.TimeString(V.Ambient.Time,V.Local.sTime)
+	F.Intrinsic.Control.If(V.Local.bExcel)
+		F.Intrinsic.String.Build("{0}\GAB_5886_Phys_Inv_Var_{1}_Export_{2}_{3}.xlsx",V.Caller.LocalGSSTempDir,V.Local.sControl,V.Local.sDate,V.Local.sTime,V.Local.sFileExport)
+		F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+		F.Intrinsic.Control.If(V.Local.bFileLocked)
+			F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File : {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+		F.Intrinsic.Control.Else
+			Gui.[V.Local.sForm].[V.Local.sControl].Export(V.Local.sFileExport,"xlsx")			
+			F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+			'Function.Intrinsic.Debug.InvokeDebugger
+			Function.Intrinsic.Debug.Stop
+			
+			F.Intrinsic.Control.CallSub(CreateDTScanData_export)
+			F.Intrinsic.Control.CallSub(MenuClickExport_ScanDataAll)			
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("{0}\GAB_5886_Phys_Inv_Var_{1}_Export_{2}_{3}.csv",V.Caller.LocalGssTempDir,V.Local.sControl,V.Local.sDate,V.Local.sTime,V.Local.sFileExport)
+		F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+		F.Intrinsic.Control.If(V.Local.bFileLocked)
+			F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File: {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+		F.Intrinsic.Control.Else
+			Gui.[V.Local.sForm].[V.Local.sControl].Export(V.Local.sFileExport,"csv")
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+	F.Intrinsic.Control.EndIf
+
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.MenuClickExport.End
+
+Program.Sub.MenuClickDelete.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.iRet.Declare
+	V.Local.sSQL.Declare
+	v.Local.bInSecurityGroup.Declare
+	'yes is 6, no is 7
+	
+	F.Global.Security.IsInGroup(V.Caller.User,"INVVAR",v.Caller.CompanyCode,v.Local.bInSecurityGroup)
+	
+	F.Intrinsic.Control.If(v.Local.bInSecurityGroup.Not)
+		F.Intrinsic.UI.Msgbox("No permission to clear counts","Security Group Permission")
+		f.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.Else
+		f.Intrinsic.UI.Msgbox("Clear out all counts? Doing so will force you to restart.","Print",4,v.Local.iRet)
+		'F.Intrinsic.String.Build("Delete INV_PHYS_VAR",V.Local.sSQL)
+		F.Intrinsic.Control.If(V.Local.iRet,=,6)
+			F.ODBC.Connection!common.OpenCompanyConnection
+			F.ODBC.Connection!common.Execute("Delete INV_PHYS_VAR")
+			F.ODBC.Connection!common.Close
+			F.Intrinsic.Control.CallSub(MenuClickRefresh)	
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.MenuClickDelete.End
+
+Program.Sub.MenuClickReset.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sSerialize.Declare
+	
+	F.Global.Registry.AddValue(V.Caller.User,V.Caller.CompanyCode,"gvInvVar",5886,1000,False,"Serialize",False,0,-999.0,1/1/1980,12:00:00 AM,"")
+	
+	v.Global.bLoadData.set(False)
+	F.Intrinsic.Control.CallSub(cmdRefresh_Click)
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.MenuClickReset.End
+
+Program.Sub.Deserialize.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sSerialize.Declare
+	
+	'Delete old registry records
+	F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode,"gvInvVar",5886,0,5,"",V.Local.sSerialize)
+	F.Intrinsic.Control.If(V.Local.sSerialize,<>,"")
+		F.ODBC.Connection!common.OpenConnection(V.Ambient.Ccon,V.Ambient.Cuser,V.Ambient.Cpass)
+		F.ODBC.Connection!common.Execute("Delete From Gs_Registry Where Reg_ID = 5886 And Seq < 1000;")
+		F.ODBC.Connection!common.Close
+	F.Intrinsic.Control.EndIf
+	
+	F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode, "gvInvVar",5886,1000,6,"",V.Local.sSerialize)	
+	F.Intrinsic.Control.If(V.Local.sSerialize.Trim,<>,"")
+		GUI.frmInvVar.GsGCInvVar.Deserialize(V.Local.sSerialize)
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry	
+Program.Sub.Deserialize.End
+
+Program.Sub.cmdRefresh_Click.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+
+	F.Intrinsic.Control.If(V.Global.bLoadData)
+		F.Intrinsic.Control.CallSub(Serialize)
+	F.Intrinsic.Control.EndIf
+
+	'Gui.FrmMaster.cmdRefresh.BackColor(-2147483626)
+	F.Intrinsic.Control.BlockEvents
+	f.Intrinsic.Control.CallSub(lockscreen)
+	F.Intrinsic.Control.CallSub(LoadInvVarGV)
+	F.Intrinsic.Control.CallSub(enablescreen)
+	F.Intrinsic.Control.UnBlockEvents
+	F.Intrinsic.Control.CallSub(Deserialize)
+
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry	
+Program.Sub.cmdRefresh_Click.End
+
+Program.Sub.LockScreen.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+
+	'GUI.FrmMaster.GsGCInvVar.Enabled(False)
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry
+Program.Sub.LockScreen.End
+
+Program.Sub.EnableScreen.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+
+	'GUI.FrmMaster.GsGCInvVar.Enabled(True)
+	gui.frmInvVar.lbl1.Visible(False)
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry
+Program.Sub.EnableScreen.End
+
+Program.Sub.GsGCInvVar_RowCellClick.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sPArt.Declare
+	V.Local.sLoc.Declare
+	V.Local.sParams.Declare
+	V.Local.bViewPart.Declare
+	V.Local.sLot.Declare
+	v.Local.sHeat.Declare
+	v.Local.sBin.Declare
+	v.Local.sSerial.Declare
+	v.Local.sSQL.Declare
+	
+	F.Global.Security.CheckUserAccessIPM(321, 0, V.Local.bViewPart)
+	
+	F.Intrinsic.Control.BlockEvents
+	
+	F.Intrinsic.Control.SelectCase(v.Args.Column)
+		F.Intrinsic.Control.Case("PART")
+			Gui.frmInvVar.GsGCInvVar.GetCellValueByColumnName("gvInvVar","PART",v.Args.RowIndex,v.Local.sPart)
+			Gui.frmInvVar.GsGCInvVar.GetCellValueByColumnName("gvInvVar","LOCATION",v.Args.RowIndex,V.Local.sLoc)
+			F.Intrinsic.Control.If(V.Local.bViewPart)
+				F.Intrinsic.String.Build("{0}!*!{1}!*!O",V.Local.sPart,V.Local.sLoc,V.Local.sParams)
+				F.Intrinsic.Control.CallSub(LockScreen)
+				F.Global.General.CallWrapperSync(300011,V.Local.sParams)
+				F.Intrinsic.Control.CallSub(EnableScreen)
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.Case("USERNAME")
+			Gui.frmInvVar.GsGCInvVar.GetCellValueByColumnName("gvInvVar","PART",v.Args.RowIndex,v.Local.sPart)
+			Gui.frmInvVar.GsGCInvVar.GetCellValueByColumnName("gvInvVar","LOCATION",v.Args.RowIndex,V.Local.sLoc)
+			Gui.frmInvVar.GsGCInvVar.GetCellValueByColumnName("gvInvVar","LOT",v.Args.RowIndex,V.Local.sLot)
+			Gui.frmInvVar.GsGCInvVar.GetCellValueByColumnName("gvInvVar","BIN",v.Args.RowIndex,V.Local.sBin)
+			Gui.frmInvVar.GsGCInvVar.GetCellValueByColumnName("gvInvVar","HEAT",v.Args.RowIndex,V.Local.sHeat)
+			Gui.frmInvVar.GsGCInvVar.GetCellValueByColumnName("gvInvVar","SERIAL",v.Args.RowIndex,V.Local.sSerial)
+			F.Intrinsic.String.Build("select PART,LOCATION,LOT,BIN,HEAT,SERIAL,QTY,LAST_CHG_DATE,LAST_CHG_TIME,LAST_CHG_USER,SEQUENCE,'-' AS '-',REFERENCE from INV_PHYS_VAR WHERE PART = '{0}' AND LOCATION = '{1}' AND LOT = '{2}' AND BIN = '{3}' AND HEAT = '{4}' AND SERIAL = '{5}' ORDER BY SEQUENCE",V.Local.sPart,V.Local.sLoc,V.Local.sLot,V.Local.sbIN,V.Local.sHeat,V.Local.sSerial,V.Local.sSQL)
+			F.Intrinsic.Control.If(V.DataTable.dtScanData.Exists)			
+				F.Data.DataTable.Close("dtScanData")
+			F.Intrinsic.Control.EndIf
+			F.Data.DataTable.CreateFromSQL("dtScanData","con",v.Local.sSQL,True)
+			F.Intrinsic.Control.CallSub(LoadScanDataGV)	
+			GUI.frmInvVar.GsGCInvVar.Enabled(False)
+			f.Intrinsic.Control.CallSub(Deserialize_ScanData)
+			Gui.frmScanData..Show
+	F.Intrinsic.Control.EndSelect
+
+	F.Intrinsic.Control.UnBlockEvents
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry
+Program.Sub.GsGCInvVar_RowCellClick.End
+
+Program.Sub.MenuClickTransViewer.Start
+v.Local.iRet.Declare(boolean)	
+F.Global.General.LaunchMenuTask(850,0,V.Local.iRet)
+
+Program.Sub.MenuClickTransViewer.End
+
+Program.Sub.LoadScanDataGV.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sRet.Declare
+	
+	Gui.frmScanData.GsGCScanData.AddGridviewFromDatatable("gvScanData","dtScanData")
+	Gui.frmScanData.GsGCScanData.SuspendLayout()
+	Gui.frmScanData.GsGCScanData.SetGridviewProperty("gvScanData","AllowSort",True)
+	Gui.frmScanData.GsGCScanData.SetGridviewProperty("gvScanData","AllowFilter",True)
+	Gui.frmScanData.GsGCScanData.SetGridviewProperty("gvScanData","OptionsViewShowGroupPanel",True)
+'	Gui.frmScanData.GsGCScanData.SetGridviewProperty("gvScanData","EnableAppearanceOddRow",True)
+	Gui.frmScanData.GsGCScanData.SetGridviewProperty("gvScanData","EnableAppearanceOddRow",True)
+	Gui.frmScanData.GsGCScanData.BestFitColumns("gvScanData")
+	Gui.frmScanData.GsGCScanData.SetGridViewProperty("gvScanData","OptionsFindAlwaysVisible",True)
+	Gui.frmScanData.GsGCScanData.SetGridViewProperty("gvScanData","OptionsViewShowAutoFilterRow",True)
+	Gui.frmScanData.GsGCScanData.SetGridViewProperty("gvScanData","OptionsViewColumnAutoWidth",False)
+	f.Intrinsic.Control.If(v.Caller.GSSVersion,>,"2019.1")
+		Gui.frmScanData.GsGCScanData.SetGridviewProperty("gvScanData","showconditionalformattingitem",true)
+	f.Intrinsic.Control.EndIf
+	
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","QTY","Caption","Scan Quantity")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","QTY","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","QTY","HeaderHAlignment","Center")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","QTY","HeaderFontBold",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","QTY","AllowEdit",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","QTY","ReadOnly",False)		
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","QTY","CellBackColor","LightYellow")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","QTY","MinWidth","95")	
+	
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","PART","Caption","Part")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","PART","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","PART","HeaderHAlignment","Center")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","PART","HeaderFontBold",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","PART","AllowEdit",False)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","PART","ReadOnly",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","PART","MinWidth","130")	
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","PART","CellForeColor","Blue")
+	
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LOCATION","Caption","Location")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LOCATION","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LOCATION","HeaderHAlignment","Center")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LOCATION","HeaderFontBold",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LOCATION","AllowEdit",False)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LOCATION","ReadOnly",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LOCATION","MinWidth","45")	
+	
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LOT","Caption","Lot")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LOT","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LOT","HeaderHAlignment","Center")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LOT","HeaderFontBold",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LOT","AllowEdit",False)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LOT","ReadOnly",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LOT","MinWidth","130")
+	
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","BIN","Caption","Bin")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","BIN","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","BIN","HeaderHAlignment","Center")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","BIN","HeaderFontBold",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","BIN","AllowEdit",False)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","BIN","ReadOnly",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","BIN","MinWidth","65")
+	
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","HEAT","Caption","Heat")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","HEAT","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","HEAT","HeaderHAlignment","Center")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","HEAT","HeaderFontBold",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","HEAT","AllowEdit",False)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","HEAT","ReadOnly",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","HEAT","MinWidth","130")
+	
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","SERIAL","Caption","Serial")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","SERIAL","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","SERIAL","HeaderHAlignment","Center")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","SERIAL","HeaderFontBold",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","SERIAL","AllowEdit",False)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","SERIAL","ReadOnly",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","SERIAL","MinWidth","130")
+	
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_USER","Caption","Username")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_USER","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_USER","HeaderHAlignment","Center")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_USER","HeaderFontBold",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_USER","AllowEdit",False)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_USER","ReadOnly",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_USER","MinWidth","65")	
+	
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_DATE","Caption","Count Date")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_DATE","DisplayCustomDatetime","d")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_DATE","HeaderHAlignment","Center")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_DATE","HeaderFontBold",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_DATE","AllowEdit",False)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_DATE","ReadOnly",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_DATE","MinWidth","100")
+
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_TIME","Caption","Count Time")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_TIME","HeaderHAlignment","Center")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_TIME","HeaderFontBold",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_TIME","AllowEdit",False)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_TIME","ReadOnly",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","LAST_CHG_TIME","MinWidth","90")
+
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","-","HeaderHAlignment","Center")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","-","HeaderFontBold",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","-","CellHAlignment","Center")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","-","CellBackColor","DarkGray")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","-","MinWidth","45")	
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","-","ShowCaption",False)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","-","Fixed","Left")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","-","AllowSort",False)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","-","AllowFilter",False)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","-","AllowEdit",False)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","-","CellForeColor","Red")
+	
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","SEQUENCE","Caption","SEQ")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","SEQUENCE","DisplayCustomNumeric","#,###,###,##0.0000")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","SEQUENCE","HeaderHAlignment","Center")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","SEQUENCE","HeaderFontBold",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","SEQUENCE","AllowEdit",False)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","SEQUENCE","ReadOnly",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","SEQUENCE","MinWidth","65")	
+	
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","REFERENCE","Caption","Reference")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","REFERENCE","HeaderHAlignment","Center")
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","REFERENCE","HeaderFontBold",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","REFERENCE","AllowEdit",False)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","REFERENCE","ReadOnly",True)
+	Gui.frmScanData.GsGCScanData.SetColumnProperty("gvScanData","REFERENCE","MinWidth","130")
+	
+	Gui.frmScanData.GsGCScanData.AddSummaryItem("gvScanData","QTY","","Sum","","","n4")
+
+	Gui.frmScanData.GsGCScanData.ResumeLayout()
+	Gui.frmScanData.GsGCScanData.MainView("gvScanData")
+
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.LoadScanDataGV.End
+
+Program.Sub.Unload_ScanData.Start
+f.Intrinsic.Control.CallSub(Serialize_ScanData)
+gui.frmScanData..Visible(false)
+GUI.frmInvVar.GsGCInvVar.Enabled(True)
+
+Program.Sub.Unload_ScanData.End
+
+Program.Sub.GsGCScanData_RowCellClick.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sPArt.Declare
+	V.Local.sLoc.Declare
+	V.Local.sSQL.Declare
+	V.Local.bViewPart.Declare
+	V.Local.sLot.Declare
+	v.Local.sHeat.Declare
+	v.Local.sBin.Declare
+	v.Local.sSerial.Declare
+	v.Local.sSeq.Declare
+	v.Local.ireturn.Declare
+			
+	F.Intrinsic.Control.BlockEvents
+	
+	F.Intrinsic.Control.SelectCase(v.Args.Column)
+		F.Intrinsic.Control.Case("-") 'delete row		
+			V.Local.sPart.Set(V.DataTable.dtScanData(V.Args.RowIndex).PART!FieldVal)
+			V.Local.sLoc.Set(V.DataTable.dtScanData(V.Args.RowIndex).LOCATION!FieldVal)
+			V.Local.sLot.Set(V.DataTable.dtScanData(V.Args.RowIndex).LOT!FieldVal)
+			V.Local.sBin.Set(V.DataTable.dtScanData(V.Args.RowIndex).BIN!FieldVal)
+			V.Local.sHeat.Set(V.DataTable.dtScanData(V.Args.RowIndex).HEAT!FieldVal)
+			V.Local.sSerial.Set(V.DataTable.dtScanData(V.Args.RowIndex).SERIAL!FieldVal)
+			V.Local.sSeq.Set(V.DataTable.dtScanData(V.Args.RowIndex).SEQUENCE!FieldVal)
+			F.Intrinsic.String.Build("DELETE INV_PHYS_VAR WHERE PART = '{0}' AND LOCATION = '{1}' AND LOT = '{2}' AND BIN = '{3}' AND HEAT = '{4}' AND SERIAL = '{5}' AND SEQUENCE = '{6}';",V.Local.sPart,V.Local.sLoc,V.Local.sLot,V.Local.sbIN,V.Local.sHeat,V.Local.sSerial,V.Local.sSeq,V.Local.sSQL)			
+
+			Function.Intrinsic.UI.MsgBox("Are you sure you want to delete the scan?","Delete Confirmation",4,v.Local.ireturn)
+			f.Intrinsic.Control.If(v.Local.ireturn,=,7)				
+			f.Intrinsic.Control.EndIf
+			f.Intrinsic.Control.If(v.Local.ireturn,=,6)
+				F.ODBC.Connection!con.Execute(V.Local.sSQL)
+				F.Data.DataTable.DeleteRow(dtscandata,V.Args.RowIndex)
+			f.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndSelect
+
+	F.Intrinsic.Control.UnBlockEvents
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry
+Program.Sub.GsGCScanData_RowCellClick.End
+
+Program.Sub.GsGCScanData_CellValueChanged.Start
+'update quantity in INV_PHYS_VAR row
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sPart.Declare
+	V.Local.sLoc.Declare
+	V.Local.sLot.Declare
+	V.Local.sBin.Declare
+	V.Local.sHeat.Declare
+	V.Local.sSerial.Declare
+	V.Local.sField.Declare
+	V.Local.sSQL.Declare
+	v.Local.sSeq.Declare
+	v.Local.iQty.Declare(float)
+	F.Intrinsic.Control.SelectCase(V.Args.Column)
+	
+		F.Intrinsic.Control.Case("QTY")
+			V.Local.sPart.Set(V.DataTable.dtScanData(V.Args.RowIndex).PART!FieldVal)
+			V.Local.sLoc.Set(V.DataTable.dtScanData(V.Args.RowIndex).LOCATION!FieldVal)
+			V.Local.sLot.Set(V.DataTable.dtScanData(V.Args.RowIndex).LOT!FieldVal)
+			V.Local.sBin.Set(V.DataTable.dtScanData(V.Args.RowIndex).BIN!FieldVal)
+			V.Local.sHeat.Set(V.DataTable.dtScanData(V.Args.RowIndex).HEAT!FieldVal)
+			V.Local.sSerial.Set(V.DataTable.dtScanData(V.Args.RowIndex).SERIAL!FieldVal)
+			V.Local.sSeq.Set(V.DataTable.dtScanData(V.Args.RowIndex).SEQUENCE!FieldVal)
+			V.Local.iQty.Set(V.DataTable.dtScanData(V.Args.RowIndex).QTY!FieldVal)
+			F.Intrinsic.String.Build("Update INV_PHYS_VAR Set QTY='{0}' Where Part = '{1}' And Location = '{2}' and Lot = '{3}' and Bin = '{4}' and Heat = '{5}' and Serial = '{6}' and SEQUENCE = '{7}';",V.Local.iQty,V.Local.sPart,V.Local.sLoc,V.Local.sLot,V.Local.sBin,V.Local.sHeat,V.Local.sSerial,v.Local.sSeq,V.Local.sSQL)
+			F.ODBC.Connection!con.Execute(V.Local.sSQL)
+
+	F.Intrinsic.Control.EndSelect
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.GsGCScanData_CellValueChanged.End
+
+Program.Sub.SetContextMenus_ScanData.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare	
+	Gui.frmScanData..ContextMenuCreate("ctxScanData")
+	Gui.frmScanData.GsGCScanData.ContextMenuAttach("ctxScanData")
+	Gui.frmScanData..ContextMenuAddItem("ctxScanData","Export",0,"Export")
+	Gui.frmScanData..ContextMenuAddItem("ctxScanData","Reset Columns",0,"Reset Columns")
+	Gui.frmScanData..ContextMenuSetItemEventHandler("ctxScanData","Export","MenuClickExport_ScanData")
+	Gui.frmScanData..ContextMenuSetItemEventHandler("ctxScanData","Reset Columns","MenuClickReset_ScanData")
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.SetContextMenus_ScanData.End
+
+Program.Sub.MenuClickExport_ScanData.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sForm.Declare(String, "frmScanData")
+	V.Local.sControl.Declare(String, "GsGCScanData")
+	V.Local.sFileExport.Declare(String)
+	V.Local.sMsg.Declare(String)
+	V.Local.sDate.Declare(String)
+	V.Local.sTime.Declare(String)
+	V.Local.bExcel.Declare(Boolean)
+	V.Local.bFileLocked.Declare(Boolean)
+	
+	F.Automation.MSExcel.CheckPresence(V.Local.bExcel)
+	F.Intrinsic.String.DateString(V.Ambient.Date,V.Local.sDate)
+	F.Intrinsic.String.TimeString(V.Ambient.Time,V.Local.sTime)
+	F.Intrinsic.Control.If(V.Local.bExcel)
+		F.Intrinsic.String.Build("{0}\GAB_5886_Phys_Inv_Var_{1}_Export_{2}_{3}.xlsx",V.Caller.LocalGSSTempDir,V.Local.sControl,V.Local.sDate,V.Local.sTime,V.Local.sFileExport)
+		F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+		F.Intrinsic.Control.If(V.Local.bFileLocked)
+			F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File : {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+		F.Intrinsic.Control.Else
+			Gui.[V.Local.sForm].[V.Local.sControl].Export(V.Local.sFileExport,"xlsx")
+			F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("{0}\GAB_5886_Phys_Inv_Var_{1}_Export_{2}_{3}.csv",V.Caller.LocalGssTempDir,V.Local.sControl,V.Local.sDate,V.Local.sTime,V.Local.sFileExport)
+		F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+		F.Intrinsic.Control.If(V.Local.bFileLocked)
+			F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File: {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+		F.Intrinsic.Control.Else
+			Gui.[V.Local.sForm].[V.Local.sControl].Export(V.Local.sFileExport,"csv")
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+	F.Intrinsic.Control.EndIf
+
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.MenuClickExport_ScanData.End
+
+Program.Sub.Serialize_ScanData.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sSerialize.Declare	
+
+	'gvScanData
+	Gui.frmScanData.GsGCScanData.Serialize("gvScanData",V.Local.sSerialize)
+	F.Global.Registry.AddValue(V.Caller.User,V.Caller.CompanyCode,"gvScanData",5886,1000,False,"Serialize",False,0,-999.0,1/1/1980,12:00:00 AM,V.Local.sSerialize)
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.Serialize_ScanData.End
+
+Program.Sub.Deserialize_ScanData.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sSerialize.Declare
+
+F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode,"gvScanData",5886,1000,6,"",V.Local.sSerialize)	
+	F.Intrinsic.Control.If(V.Local.sSerialize.Trim,<>,"")
+		GUI.frmScanData.GsGCScanData.Deserialize(V.Local.sSerialize)
+	F.Intrinsic.Control.EndIf
+	
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry	
+Program.Sub.Deserialize_ScanData.End
+
+Program.Sub.MenuClickReset_ScanData.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+
+	V.Local.sSerialize.Declare
+	'Delete old registry records
+	F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode,"gvScanData",5886,1000,6,"",V.Local.sSerialize)
+	F.Intrinsic.Control.If(V.Local.sSerialize,<>,"")
+		F.ODBC.Connection!common.OpenConnection(V.Ambient.Ccon,V.Ambient.Cuser,V.Ambient.Cpass)
+		F.ODBC.Connection!common.Execute("Delete From Gs_Registry Where Reg_ID = 5886 And Program = 'GVSCANDATA' And Seq = 1000;")
+		F.ODBC.Connection!common.Close
+	F.Intrinsic.Control.EndIf
+	'F.Global.Registry.AddValue(V.Caller.User,V.Caller.CompanyCode,"gvScanData",5886,1000,False,"Serialize",False,0,-999.0,1/1/1980,12:00:00 AM,"")
+	gui.frmScanData..Visible(false)
+	F.Intrinsic.Control.CallSub(LoadScanDataGV)	
+	Gui.frmScanData..Show
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.MenuClickReset_ScanData.End
+
+Program.Sub.CreateDTScanData_export.Start
+	v.Local.sSQL.Declare
+	F.Intrinsic.Control.Try
+			V.Local.sSQL.Set("select PART,LOCATION,LOT,BIN,HEAT,SERIAL,QTY,LAST_CHG_DATE,LAST_CHG_TIME,LAST_CHG_USER,SEQUENCE,REFERENCE from INV_PHYS_VAR ORDER BY PART,LOCATION,LOT,BIN,HEAT,SERIAL,SEQUENCE")
+			F.Intrinsic.Control.If(V.DataTable.dtScanDataExport.Exists)			
+				F.Data.DataTable.Close("dtScanDataExport")
+			F.Intrinsic.Control.EndIf
+			F.Data.DataTable.CreateFromSQL("dtScanDataExport","con",v.Local.sSQL,True)
+			F.Intrinsic.Control.CallSub(LoadScanDataExportGV)	
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry
+Program.Sub.CreateDTScanData_export.End
+
+Program.Sub.LoadScanDataExportGV.Start
+	gui.frmScanDataExport.GSGCScanDataAll.AddGridviewFromDatatable("gvScanDataExport","dtScanDataExport")
+	gui.frmScanDataExport.GSGCScanDataAll.SuspendLayout()
+	gui.frmScanDataExport.GSGCScanDataAll.ResumeLayout()
+	gui.frmScanDataExport.GSGCScanDataAll.MainView("gvScanDataExport")
+Program.Sub.LoadScanDataExportGV.End
+
+Program.Sub.MenuClickExport_ScanDataAll.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sForm.Declare(String, "frmScanDataExport")
+	V.Local.sControl.Declare(String, "GSGCScanDataAll")
+	V.Local.sFileExport.Declare(String)
+	V.Local.sMsg.Declare(String)
+	V.Local.sDate.Declare(String)
+	V.Local.sTime.Declare(String)
+	V.Local.bExcel.Declare(Boolean)
+	V.Local.bFileLocked.Declare(Boolean)
+	
+	F.Automation.MSExcel.CheckPresence(V.Local.bExcel)
+	F.Intrinsic.String.DateString(V.Ambient.Date,V.Local.sDate)
+	F.Intrinsic.String.TimeString(V.Ambient.Time,V.Local.sTime)
+	F.Intrinsic.Control.If(V.Local.bExcel)
+		F.Intrinsic.String.Build("{0}\GAB_5886_Phys_Inv_Var_{1}_Export_{2}_{3}.xlsx",V.Caller.LocalGSSTempDir,V.Local.sControl,V.Local.sDate,V.Local.sTime,V.Local.sFileExport)
+		F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+		F.Intrinsic.Control.If(V.Local.bFileLocked)
+			F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File : {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+		F.Intrinsic.Control.Else
+		Function.Intrinsic.Debug.Stop
+		
+			Gui.[V.Local.sForm].[V.Local.sControl].Export(V.Local.sFileExport,"xlsx")
+			F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("{0}\GAB_5886_Phys_Inv_Var_{1}_Export_{2}_{3}.csv",V.Caller.LocalGssTempDir,V.Local.sControl,V.Local.sDate,V.Local.sTime,V.Local.sFileExport)
+		F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+		F.Intrinsic.Control.If(V.Local.bFileLocked)
+			F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File: {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+		F.Intrinsic.Control.Else
+			Gui.[V.Local.sForm].[V.Local.sControl].Export(V.Local.sFileExport,"csv")
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+	F.Intrinsic.Control.EndIf
+
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndTry
+Program.Sub.MenuClickExport_ScanDataAll.End
+
+Program.Sub.Comments.Start
+${$5$}$20.1.8769.31171$}$0
+${$6$}$bstevens$}$20240122090027522$}$3Pg7+K2MGztoXyjxMVZqWaM5g3GOUsSNufBpXkESEJQ3/HfBdfsulK0+rVJx2I0PwBm8bAcOa4NBA/tma+UWcQ==
+Program.Sub.Comments.End
