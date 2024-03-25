@@ -244,6 +244,7 @@ Program.Sub.LoadDtInvVar.Start
 	V.Local.sShip.Declare
 	V.Local.sIss.Declare
 	
+	
 	F.Intrinsic.Control.If(V.DataTable.dtInvVar.Exists)
 		F.Data.DataTable.Close("dtInvVar")
 	F.Intrinsic.Control.EndIf
@@ -256,7 +257,7 @@ Program.Sub.LoadDtInvVar.Start
 
 '	F.Data.DataTable.CreateFromSQL("dtInvVar","con","SELECT A.PART,A.LOCATION,C.PRODUCT_LINE,C.CODE_SORT,A.LOT,A.BIN,A.HEAT,A.SERIAL,SUM(A.QTY) AS PHYSICAL_QTY,SUM(CASE WHEN B.QUANTITY IS NULL THEN '0' ELSE B.QUANTITY END) AS MSTR_QTY,SUM(A.QTY-B.QUANTITY) AS QTY_VAR, SUM	(B.UNIT_COST*(A.QTY-B.QUANTITY)) AS EXT_COST_VAR,SUM(C.QTY_ONHAND) AS QTY_ONHAND, B.UNIT_COST , SUM(D.COST) AS COST, C.FLAG_LOT FROM V_INV_PHYS_VAR A LEFT JOIN V_ITEM_MASTER B ON A.PART = B.PART AND A.LOCATION = B.LOCATION AND A.LOT = B.LOT AND A.BIN = B.BIN AND A.HEAT = 		B.HEAT AND A.SERIAL = B.SERIAL_NUMBER LEFT JOIN V_INVENTORY_ALL C ON A.PART = C.PART AND A.LOCATION = C.LOCATION LEFT JOIN V_INVENTORY_COST D ON A.PART = D.PART AND A.LOCATION = D.LOCN GROUP BY A.PART, A.LOCATION, C.PRODUCT_LINE, C.CODE_SORT, A.LOT, A.BIN, A.HEAT, A.SERIAL, 	B.UNIT_COST, C.FLAG_LOT ",True)
 
-	F.Data.DataTable.CreateFromSQL("dtInvVar","con","SELECT A.PART,A.LOCATION,C.DESCRIPTION,C.PRODUCT_LINE,C.UM_INVENTORY,C.CODE_SORT,A.LOT,A.BIN,A.HEAT,A.SERIAL,SUM(A.QTY) AS PHYSICAL_QTY,CASE WHEN B.QUANTITY IS NULL THEN '0' ELSE B.QUANTITY END AS MSTR_QTY,SUM(A.QTY-B.QUANTITY) AS QTY_VAR, SUM(B.UNIT_COST*(A.QTY-B.QUANTITY)) AS EXT_COST_VAR,C.QTY_ONHAND, B.UNIT_COST , D.COST, C.FLAG_LOT,MAX(LAST_CHG_USER) AS USERNAME,MAX(A.LAST_CHG_DATE) AS COUNT_DATE,MAX(A.LAST_CHG_TIME) AS COUNT_TIME,MIN(A.REFERENCE) AS REFERENCE FROM V_INV_PHYS_VAR A LEFT JOIN V_ITEM_MASTER B ON A.PART = B.PART AND A.LOCATION = B.LOCATION AND A.LOT = B.LOT AND A.BIN = B.BIN AND A.HEAT = B.HEAT AND A.SERIAL = B.SERIAL_NUMBER LEFT JOIN V_INVENTORY_ALL C ON A.PART = C.PART AND A.LOCATION = C.LOCATION LEFT JOIN V_INVENTORY_COST D ON A.PART = D.PART AND A.LOCATION = D.LOCN GROUP BY A.PART, A.LOCATION, C.PRODUCT_LINE, C.CODE_SORT, A.LOT, A.BIN, A.HEAT, A.SERIAL, MSTR_QTY, C.QTY_ONHAND,B.UNIT_COST, D.COST,C.FLAG_LOT,C.DESCRIPTION,UM_INVENTORY  ",True)
+	F.Data.DataTable.CreateFromSQL("dtInvVar","con","SELECT A.PART,IF(x.GSS_PART is null,substring(A.PART,0,17),x.DISPLAY_PART) AS DISPLAY_PART , IF(x.GSS_PART is null,substring(A.PART,18,3),x.DISPLAY_REV) AS DISPLAY_REV,  IF(x.GSS_PART is null,A.PART,ltrim(rtrim(x.DISPLAY_PART))+' '+ltrim(rtrim(x.DISPLAY_REV))) AS DISPLAY_PARTREV,A.LOCATION,C.DESCRIPTION,C.PRODUCT_LINE,C.UM_INVENTORY,C.CODE_SORT,A.LOT,A.BIN,A.HEAT,A.SERIAL,SUM(A.QTY) AS PHYSICAL_QTY,CASE WHEN B.QUANTITY IS NULL THEN '0' ELSE B.QUANTITY END AS MSTR_QTY,SUM(A.QTY-B.QUANTITY) AS QTY_VAR, SUM(B.UNIT_COST*(A.QTY-B.QUANTITY)) AS EXT_COST_VAR,C.QTY_ONHAND, B.UNIT_COST , D.COST, C.FLAG_LOT,MAX(LAST_CHG_USER) AS USERNAME,MAX(A.LAST_CHG_DATE) AS COUNT_DATE,MAX(A.LAST_CHG_TIME) AS COUNT_TIME,MIN(A.REFERENCE) AS REFERENCE, C.CODE_ABC, C.DATE_CYCLE, C.CODE_SOURCE FROM V_INV_PHYS_VAR A LEFT JOIN V_ITEM_MASTER B ON A.PART = B.PART AND A.LOCATION = B.LOCATION AND A.LOT = B.LOT AND A.BIN = B.BIN AND A.HEAT = B.HEAT AND A.SERIAL = B.SERIAL_NUMBER LEFT JOIN V_INVENTORY_ALL C ON A.PART = C.PART AND A.LOCATION = C.LOCATION LEFT JOIN V_INVENTORY_COST D ON A.PART = D.PART AND A.LOCATION = D.LOCN left outer join INV_LXR x ON a.PART=x.GSS_PART GROUP BY A.PART, A.LOCATION, C.PRODUCT_LINE, C.CODE_SORT, A.LOT, A.BIN, A.HEAT, A.SERIAL, MSTR_QTY, C.QTY_ONHAND,B.UNIT_COST, D.COST, C.FLAG_LOT, C.DESCRIPTION, UM_INVENTORY, C.CODE_ABC, C.DATE_CYCLE, C.CODE_SOURCE;",True)
 '	F.Data.DataTable.CreateFromSQL("dtInvVar","con","SELECT A.PART,A.LOCATION,C.DESCRIPTION,C.PRODUCT_LINE,C.UM_INVENTORY,C.CODE_SORT,A.LOT,A.BIN,A.HEAT,A.SERIAL,SUM(A.QTY) AS PHYSICAL_QTY,CASE WHEN B.QUANTITY IS NULL THEN '0' ELSE B.QUANTITY END AS MSTR_QTY,SUM(A.QTY-B.QUANTITY) AS QTY_VAR, SUM(B.UNIT_COST*(A.QTY-B.QUANTITY)) AS EXT_COST_VAR,C.QTY_ONHAND, B.UNIT_COST , D.COST, C.FLAG_LOT,(select TOP 1 Z.LAST_CHG_USER from INV_PHYS_VAR Z WHERE PART=Z.PART AND LOCATION=Z.LOCATION AND LOT=Z.LOT AND BIN=Z.BIN AND HEAT=Z.HEAT AND SERIAL=Z.SERIAL ORDER BY Z.LAST_CHG_DATE DESC, Z.LAST_CHG_TIME DESC) AS USERNAME,MAX(A.LAST_CHG_DATE) AS COUNT_DATE,MAX(A.LAST_CHG_TIME) AS COUNT_TIME,MIN(A.REFERENCE) AS REFERENCE FROM V_INV_PHYS_VAR A LEFT JOIN V_ITEM_MASTER B ON A.PART = B.PART AND A.LOCATION = B.LOCATION AND A.LOT = B.LOT AND A.BIN = B.BIN AND A.HEAT = B.HEAT AND A.SERIAL = B.SERIAL_NUMBER LEFT JOIN V_INVENTORY_ALL C ON A.PART = C.PART AND A.LOCATION = C.LOCATION LEFT JOIN V_INVENTORY_COST D ON A.PART = D.PART AND A.LOCATION = D.LOCN GROUP BY A.PART, A.LOCATION, C.PRODUCT_LINE, C.CODE_SORT, A.LOT, A.BIN, A.HEAT, A.SERIAL, MSTR_QTY, C.QTY_ONHAND,B.UNIT_COST, D.COST,C.FLAG_LOT,C.DESCRIPTION,UM_INVENTORY ",True)
 
 	F.Global.General.ReadOption("400380","0","0","0000",V.Local.sShip)
@@ -473,7 +474,7 @@ Program.Sub.LoadInvVarGV.Start
 	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","USERNAME","MinWidth","65")
 	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","USERNAME","CellForeColor","Blue")
 
-	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DESCRIPTION","Caption","DESCRIPTION")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DESCRIPTION","Caption","Description")
 	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DESCRIPTION","DisplayCustomNumeric","#,###,###,##0.0000")
 	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DESCRIPTION","HeaderHAlignment","Center")
 	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DESCRIPTION","HeaderFontBold",True)
@@ -518,6 +519,55 @@ Program.Sub.LoadInvVarGV.Start
 	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","REFERENCE","AllowEdit",False)
 	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","REFERENCE","ReadOnly",True)
 	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","REFERENCE","MinWidth","130")
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_ABC","Caption","ABC Code")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_ABC","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_ABC","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_ABC","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_ABC","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_ABC","MinWidth","130")	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_ABC","Visible",False)
+
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DATE_CYCLE","Caption","Cycle Date")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DATE_CYCLE","DisplayCustomDatetime","d")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DATE_CYCLE","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DATE_CYCLE","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DATE_CYCLE","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DATE_CYCLE","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DATE_CYCLE","MinWidth","100")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DATE_CYCLE","Visible",False)
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_SOURCE","Caption","Source Code")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_SOURCE","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_SOURCE","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_SOURCE","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_SOURCE","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_SOURCE","MinWidth","130")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","CODE_SOURCE","Visible",False)
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_PART","Caption","Display Part")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_PART","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_PART","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_PART","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_PART","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_PART","MinWidth","130")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_PART","Visible",False)
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_REV","Caption","Display Rev")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_REV","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_REV","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_REV","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_REV","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_REV","MinWidth","130")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_REV","Visible",False)
+	
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_PARTREV","Caption","Display PartRev")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_PARTREV","HeaderHAlignment","Center")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_PARTREV","HeaderFontBold",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_PARTREV","AllowEdit",False)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_PARTREV","ReadOnly",True)
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_PARTREV","MinWidth","130")
+	Gui.frmInvVar.GsGCInvVar.SetColumnProperty("gvInvVar","DISPLAY_PARTREV","Visible",False)
 	
 	F.Global.General.ReadOption("400363","0","0","0000",V.Local.sRet)
 	F.Intrinsic.Control.If(V.Local.sRet,=,"True")
@@ -1423,6 +1473,6 @@ Program.Sub.MenuClickExport_ScanDataAll.Start
 Program.Sub.MenuClickExport_ScanDataAll.End
 
 Program.Sub.Comments.Start
-${$5$}$20.1.8769.31171$}$0
-${$6$}$bstevens$}$20240122090027522$}$3Pg7+K2MGztoXyjxMVZqWaM5g3GOUsSNufBpXkESEJQ3/HfBdfsulK0+rVJx2I0PwBm8bAcOa4NBA/tma+UWcQ==
+${$5$}$20.1.8845.21914$}$0
+${$6$}$bstevens$}$20240322145536210$}$3Pg7+K2MGztoXyjxMVZqWaM5g3GOUsSNufBpXkESEJQrCbAwG7KexKaSqdwj91ID7fFqAur5fCv40g8706IhAQ==
 Program.Sub.Comments.End
